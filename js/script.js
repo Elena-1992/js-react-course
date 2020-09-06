@@ -22,7 +22,7 @@
 Проверить, чтобы все работало без ошибок в консоли */
 
 'use strict';
-let numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?');
+let numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?');
 
 let personalMovieDB = {};
 personalMovieDB.count = numberOfFilms;
@@ -31,9 +31,64 @@ personalMovieDB.actors = {};
 personalMovieDB.genres = [];
 personalMovieDB.privat = false;
 
-let lastMovie = prompt('Один из последних просмотренных фильмов?'),
-    rating = prompt('На сколько оцените его?');
-// personalMovieDB.movies = {
-//     lastMovie: rating
-// };
-personalMovieDB.movies[lastMovie] = rating;
+// for(let i = 0; i < 2; i++ ) {
+//     let lastMovie = prompt('Один из последних просмотренных фильмов?'),
+//         rating = prompt('На сколько оцените его?');
+//     if(
+//         lastMovie !== null &&
+//         rating !== null &&
+//         lastMovie.length > 0 &&
+//         lastMovie.length < 51 && 
+//         rating.length > 0 && 
+//         rating.length < 51
+//     ) {
+//         personalMovieDB.movies[lastMovie] = rating;
+//     } else {
+//         i--;
+//     }
+// }
+// let i = 0;
+// while(i < 2) {
+//     let lastMovie = prompt('Один из последних просмотренных фильмов?'),
+//         rating = prompt('На сколько оцените его?');
+//     if(
+//         lastMovie !== null &&
+//         rating !== null &&
+//         lastMovie.length > 0 &&
+//         lastMovie.length < 51 && 
+//         rating.length > 0 && 
+//         rating.length < 51
+//     ) {
+//         personalMovieDB.movies[lastMovie] = rating;
+//         i++;
+//         console.log(i);
+//     }
+// }
+let i = 0;
+do {
+    let lastMovie = prompt('Один из последних просмотренных фильмов?'),
+        rating = prompt('На сколько оцените его?');
+    if(
+        lastMovie !== null &&
+        rating !== null &&
+        lastMovie.length > 0 &&
+        lastMovie.length < 51 && 
+        rating.length > 0 && 
+        rating.length < 51
+    ) {
+        personalMovieDB.movies[lastMovie] = rating;
+        i++;
+    }
+}
+while(i < 2);
+console.log(personalMovieDB);
+
+if (numberOfFilms < 10) {
+   alert("Просмотрено довольно мало фильмов");
+} else if( numberOfFilms >= 10 && numberOfFilms <= 30) {
+    alert("Вы классический зритель");
+} else if(numberOfFilms > 30){
+    alert("Вы киноман");
+} else {
+    alert("Произошла ошибка");
+}
